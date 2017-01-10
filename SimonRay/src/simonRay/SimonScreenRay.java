@@ -18,7 +18,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	private TextLabel label;
 	private ButtonInterfaceRay[] buttons;
 	private int sequenceIndex;
-	private int lastSelectedButton;
+	private int lastSelected;
 	public SimonScreenRay(int width, int height) {
 		super(width, height);
 		Thread app = new Thread(this);
@@ -46,22 +46,18 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 		sequenceIndex = 0;
 	}
 	private void playSequence() {
-		MoveInterfaceRay b;
-		for(int i = 0; i<sequence.size(); i++){
-			b = sequence.get(i);
-			if(b!=null){
-				ButtonInterfaceRay button = b.getButton();
-				button.highlight();
-				int sleepTime = (int)(10000/round);
-				try {
-					Thread.sleep(sleepTime);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				button.dim();
+		ButtonInterfaceRay b = null;
+		for(MoveInterfaceRay m: sequence){
+			if(b!=null)b.dim();
+			b = m.getButton();
+			b.highlight();
+			try {
+				Thread.sleep((long)(2000*(2.0/(round+2))));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-			
 		}
+		b.dim();
 	}
 
 	private void changeText(String s){
@@ -105,14 +101,14 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 						buttonPress.start();
 						
 
-						if(acceptingInput && sequence.get(sequenceIndex).getButton() == b){
+						if(acceptInput && sequence.get(sequenceIndex).getButton() == b){
 							sequenceIndex++;
-						}else if(acceptingInput){
+						}else if(acceptInput){
 							gameOver();
 							return;
 						}
 						if(sequenceIndex == sequence.size()){
-							Thread nextRound = new Thread(SimonScreen.this);
+							Thread nextRound = new Thread(SimonScreenRay.this);
 							nextRound.start();
 						}
 					}
@@ -123,26 +119,27 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 		progress = getProgress();
 		label = new TextLabel(130,230,300,40,"Let's play Simon!");
 		sequence = new ArrayList<MoveInterfaceRay>();
-		lastSelectedButton = -1;
+		lastSelected = -1;
 		sequence.add(randomMove());
 		sequence.add(randomMove());
 		round = 0;
 		viewObjects.add(progress);
 		viewObjects.add(label);
 	}
-
+	
+	public void gameOver() {
+		progress.gameOver();
+	}
+	
 	private MoveInterfaceRay randomMove() {
-		ButtonInterfaceRay b;
 		int rand;
 		do{
 			rand = (int)(Math.random()*buttons.length);
-		}while(rand == lastSelectedButton);
-		b = buttons[rand];
-		return getMove(b);
-	}
-
-	private MoveInterfaceRay getMove(ButtonInterfaceRay b) {
+		}while(rand == lastSelected);
+		lastSelected = rand;
 		return null;
+		//return new Move(buttons[rand]);
+		//needs Move contructor
 	}
 
 	private ButtonInterfaceRay getAButton() {
