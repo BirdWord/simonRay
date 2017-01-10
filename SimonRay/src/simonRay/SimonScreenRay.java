@@ -14,7 +14,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	private ArrayList<MoveInterfaceRay> sequence;
 	private int round;
 	private boolean acceptInput;
-	private final int BUTTONS = 5;
+	private final int BUTTONS = 6;
 	private TextLabel label;
 	private ButtonInterfaceRay[] buttons;
 	private int sequenceIndex;
@@ -74,7 +74,52 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	}
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		generateButtons(viewObjects);
+		Color[] colors = {Color.red, Color.blue, new Color(240,160,70), new Color(20,255,140), Color.yellow, new Color(180,90,210)};
+		String[] names = {"RED", "BLUE", "ORANGE", "GREEN", "YELLOW", "PURPLE"};
+		buttons = new ButtonInterfaceRay[BUTTONS];
+		for(int i = 0; i < BUTTONS; i++ ){
+			buttons[i] = getAButton();
+			buttons[i].setName(names[i]);
+			buttons[i].setColor(colors[i]);
+			buttons[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(BUTTONS))));
+			buttons[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(BUTTONS))));
+			final ButtonInterfaceRay b = buttons[i];
+			b.dim();
+			buttons[i].setAction(new Action() {
+
+				public void act() {
+
+						Thread buttonPress = new Thread(new Runnable() {
+							
+							public void run() {
+								b.highlight();
+								try {
+									Thread.sleep(500);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
+								b.dim();
+								
+							}
+						});
+						buttonPress.start();
+						
+
+						if(acceptingInput && sequence.get(sequenceIndex).getButton() == b){
+							sequenceIndex++;
+						}else if(acceptingInput){
+							gameOver();
+							return;
+						}
+						if(sequenceIndex == sequence.size()){
+							Thread nextRound = new Thread(SimonScreen.this);
+							nextRound.start();
+						}
+					}
+
+			});
+			viewObjects.add(buttons[i]);
+		}
 		progress = getProgress();
 		label = new TextLabel(130,230,300,40,"Let's play Simon!");
 		sequence = new ArrayList<MoveInterfaceRay>();
@@ -100,60 +145,11 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 		return null;
 	}
 
-	private void generateButtons(List<Visible> viewObjects) {
-		Color[] colors = new Color[BUTTONS];
-		for(int i = 0; i<colors.length; i++){
-			colors[i] = new Color(randomRGB(),randomRGB(),randomRGB());
-		}
-		for(int i = 0; i<BUTTONS; i++){
-			final ButtonInterfaceRay b = getAButton();
-			b.setColor(colors[i]);
-			b.setX(1);
-			b.setY(1);
-			b.setAction(new Action(){
-
-				public void act(){
-					if(acceptInput){
-						Thread blink = new Thread(new Runnable(){
-
-							public void run(){
-								b.highlight();
-								try {
-									Thread.sleep(800);
-									b.dim();
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-							}
-
-						});
-						blink.start();
-						if(b == sequence.get(sequenceIndex).getButton()){
-							sequenceIndex++;
-							if(sequenceIndex == sequence.size()){
-								Thread nextRound = new Thread(SimonScreenRay.this);
-								nextRound.start(); 
-							}
-						}
-						else{
-							progress.gameOver();
-						}
-					}
-				}
-			});
-			viewObjects.add(b);
-		}
-		
-	}
-
 	private ButtonInterfaceRay getAButton() {
 		return null;
 	}
 
 	private ProgressInterfaceRay getProgress() {
 		return null;
-	}
-	private int randomRGB(){
-		return (int)(Math.random()*256);
 	}
 }

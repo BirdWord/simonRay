@@ -7,16 +7,14 @@ import gui.components.Clickable;
 
 public interface ButtonInterfaceRay extends Clickable {
 
-	void setColor(Color blue);
-
-	void setX(int i);
-
-	void setY(int i);
-
+	void setColor(Color color);
 
 	void setAction(Action action);
 
 	void highlight();
 
 	void dim();
+
+	void setName(String string);
+
 }
