@@ -1,6 +1,8 @@
 package partnercode;
 
 import simonRay.ButtonInterfaceRay;
+
+import simonRay.SimonScreenRay;
 import simonRay.MoveInterfaceRay;
 
 public class Move implements MoveInterfaceRay {
@@ -10,7 +12,7 @@ public class Move implements MoveInterfaceRay {
 
 	@Override
 	public ButtonInterfaceRay getButton() {
-		return null;
+		return SimonScreenRay.getButtons()[(int) (Math.random()*SimonScreenRay.getButtons().length)];
 	}
 
 }

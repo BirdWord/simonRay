@@ -16,7 +16,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	private boolean acceptInput;
 	private final int BUTTONS = 6;
 	private TextLabel label;
-	private ButtonInterfaceRay[] buttons;
+	private static ButtonInterfaceRay[] buttons;
 	private int sequenceIndex;
 	private int lastSelected;
 	public SimonScreenRay(int width, int height) {
@@ -139,7 +139,9 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 		//return new Move(buttons[rand]);
 		//needs Move contructor
 	}
-
+	public static ButtonInterfaceRay[] getButtons(){
+		return buttons;
+	}
 	private ButtonInterfaceRay getAButton() {
 		return null;
 	}
