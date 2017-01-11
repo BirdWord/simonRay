@@ -71,11 +71,9 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		Color[] colors = {Color.red, Color.blue, new Color(240,160,70), new Color(20,255,140), Color.yellow, new Color(180,90,210)};
-		String[] names = {"RED", "BLUE", "ORANGE", "GREEN", "YELLOW", "PURPLE"};
 		buttons = new ButtonInterfaceRay[BUTTONS];
 		for(int i = 0; i < BUTTONS; i++ ){
 			buttons[i] = getAButton();
-			buttons[i].setName(names[i]);
 			buttons[i].setColor(colors[i]);
 			buttons[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(BUTTONS))));
 			buttons[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(BUTTONS))));

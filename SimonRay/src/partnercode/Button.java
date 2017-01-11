@@ -51,12 +51,6 @@ public class Button extends Component implements ButtonInterfaceRay {
 	}
 
 	@Override
-	public void setName(String string) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void update(Graphics2D arg0) {
 		// TODO Auto-generated method stub
 		
