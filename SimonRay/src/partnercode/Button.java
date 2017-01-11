@@ -8,7 +8,8 @@ import gui.components.Component;
 import simonRay.ButtonInterfaceRay;
 
 public class Button extends Component implements ButtonInterfaceRay {
-
+	private Color c;
+	private Action actionB;
 	public Button(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -28,13 +29,14 @@ public class Button extends Component implements ButtonInterfaceRay {
 
 	@Override
 	public void setColor(Color color) {
-		// TODO Auto-generated method stub
+		c = color;
+		update();
 		
 	}
 
 	@Override
 	public void setAction(Action action) {
-		// TODO Auto-generated method stub
+		actionB = action;
 		
 	}
 
