@@ -4,6 +4,8 @@ import gui.GUIApplication;
 
 public class SimonGameRay extends GUIApplication {
 
+	private static final long serialVersionUID = 1L;
+
 	public SimonGameRay(int width, int height) {
 		super(width, height);
 	}
