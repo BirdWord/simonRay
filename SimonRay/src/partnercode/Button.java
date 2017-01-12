@@ -5,10 +5,11 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
 import gui.components.Action;
+import gui.components.Clickable;
 import gui.components.Component;
 import simonRay.ButtonInterfaceRay;
 
-public class Button extends Component implements ButtonInterfaceRay {
+public class Button extends Component implements ButtonInterfaceRay{
 	private Color c;
 	private Color screenColor;
 	private Action actionB;
