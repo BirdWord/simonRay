@@ -8,6 +8,7 @@ import gui.components.Action;
 import gui.components.TextLabel;
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
+import partnercode.Button;
 import partnercode.Move;
 
 public class SimonScreenRay extends ClickableScreen implements Runnable {
