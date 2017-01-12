@@ -13,8 +13,8 @@ public class Button extends Component implements ButtonInterfaceRay {
 	private Color screenColor;
 	private Action actionB;
 	private boolean highlighted;
-	public Button(int x, int y, int w, int h) {
-		super(x, y, w, h);
+	public Button(int x, int y) {
+		super(x, y,70, 70);
 		// TODO Auto-generated constructor stub
 	}
 
