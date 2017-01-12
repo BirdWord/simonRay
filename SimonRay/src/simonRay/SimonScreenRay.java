@@ -143,7 +143,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 		return buttons;
 	}
 	private ButtonInterfaceRay getAButton() {
-		return null;
+		return new Button(0,0);
 	}
 
 	private ProgressInterfaceRay getProgress() {
