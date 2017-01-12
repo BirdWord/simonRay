@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gui.Screen;
-import gui.components.Clickable;
-import gui.components.Visible;
 
 public abstract class ClickableScreen extends Screen implements MouseListener {
 	private ArrayList<Clickable> clickables;
@@ -26,31 +24,6 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 			}
 		}
 	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
 		initAllObjects(viewObjects);
