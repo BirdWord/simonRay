@@ -8,6 +8,7 @@ import gui.components.Action;
 import gui.components.TextLabel;
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
+import partnercode.Move;
 
 public class SimonScreenRay extends ClickableScreen implements Runnable {
 	private ProgressInterfaceRay progress;
@@ -135,9 +136,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 			rand = (int)(Math.random()*buttons.length);
 		}while(rand == lastSelected);
 		lastSelected = rand;
-		return null;
-		//return new Move(buttons[rand]);
-		//needs Move contructor
+		return new Move(buttons[rand]);
 	}
 	public static ButtonInterfaceRay[] getButtons(){
 		return buttons;
