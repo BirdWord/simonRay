@@ -7,9 +7,10 @@ import simonRay.ProgressInterfaceRay;
 
 public class Progress extends Component implements ProgressInterfaceRay {
 
+	private int roundLevel;
+	private int sequenceSize;
 	public Progress(int x, int y, int w, int h) {
 		super(x, y, w, h);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -20,13 +21,12 @@ public class Progress extends Component implements ProgressInterfaceRay {
 
 	@Override
 	public void setRound(int round) {
-		// TODO Auto-generated method stub
-		
+		roundLevel = round;
 	}
 
 	@Override
 	public void setSequenceSize(int size) {
-		// TODO Auto-generated method stub
+		sequenceSize = size;
 		
 	}
 

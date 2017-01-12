@@ -22,8 +22,10 @@ public class Button extends Component implements ButtonInterfaceRay {
 	}
 
 	@Override
-	public boolean isHovered(int arg0, int arg1) {
-		// TODO Auto-generated method stub
+	public boolean isHovered(int x, int y) {
+		if(x > getX() && x < getX()+getWidth() && y > getY() && y < getY()+getHeight()){
+			return true;
+		}
 		return false;
 	}
 
