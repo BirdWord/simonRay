@@ -2,6 +2,7 @@ package partnercode;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import gui.components.Action;
 import gui.components.Component;
@@ -9,8 +10,9 @@ import simonRay.ButtonInterfaceRay;
 
 public class Button extends Component implements ButtonInterfaceRay {
 	private Color c;
-	private Color actualColor;
+	private Color screenColor;
 	private Action actionB;
+	private boolean highlighted;
 	public Button(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -18,7 +20,7 @@ public class Button extends Component implements ButtonInterfaceRay {
 
 	@Override
 	public void act() {
-		// TODO Auto-generated method stub
+		actionB.act();
 		
 	}
 
@@ -33,6 +35,7 @@ public class Button extends Component implements ButtonInterfaceRay {
 	@Override
 	public void setColor(Color color) {
 		c = color;
+		screenColor = c;
 		update();
 		
 	}
@@ -45,20 +48,32 @@ public class Button extends Component implements ButtonInterfaceRay {
 
 	@Override
 	public void highlight() {
-		// TODO Auto-generated method stub
-		setColor(actualColor);
+		if(c != null){
+			screenColor = c;
+		}
+		highlighted = true;
+		update();
 	}
 
 	@Override
 	public void dim() {
-		setColor(Color.white);
-		
+		screenColor = Color.gray;
+		highlighted = false;
+		update();
 	}
 
 	@Override
-	public void update(Graphics2D arg0) {
-		// TODO Auto-generated method stub
-		
+	public void update(Graphics2D g) {
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		if(screenColor != null) g.setColor(screenColor);
+		else g.setColor(Color.gray);
+		g.fillOval(0, 0, getWidth(), getHeight());
+		g.setColor(Color.black);
+		g.drawOval(0, 0, getWidth()-1, getHeight()-1);
+		if(highlighted){
+			g.setColor(screenColor);
+			g.fillOval(0, 0, getWidth(), getHeight());
+		}
 	}
 
 }
