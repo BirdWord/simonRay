@@ -9,6 +9,7 @@ import simonRay.ButtonInterfaceRay;
 
 public class Button extends Component implements ButtonInterfaceRay {
 	private Color c;
+	private Color actualColor;
 	private Action actionB;
 	public Button(int x, int y, int w, int h) {
 		super(x, y, w, h);
@@ -45,12 +46,12 @@ public class Button extends Component implements ButtonInterfaceRay {
 	@Override
 	public void highlight() {
 		// TODO Auto-generated method stub
-		
+		setColor(c);
 	}
 
 	@Override
 	public void dim() {
-		// TODO Auto-generated method stub
+		setColor(Color.white);
 		
 	}
 
