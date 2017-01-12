@@ -15,8 +15,4 @@ public interface ButtonInterfaceRay extends Clickable {
 
 	void dim();
 
-	void setX(int i);
-
-	void setY(int i);
-
 }

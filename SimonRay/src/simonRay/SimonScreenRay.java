@@ -77,8 +77,8 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 		for(int i = 0; i < BUTTONS; i++ ){
 			buttons[i] = getAButton();
 			buttons[i].setColor(colors[i]);
-			buttons[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(BUTTONS))));
-			buttons[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(BUTTONS))));
+			//buttons[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(BUTTONS))));
+			//buttons[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(BUTTONS))));
 			final ButtonInterfaceRay b = buttons[i];
 			b.dim();
 			buttons[i].setAction(new Action() {
