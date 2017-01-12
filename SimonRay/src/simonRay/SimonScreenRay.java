@@ -128,7 +128,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	
 	public void gameOver() {
 		progress.gameOver();
-		//GAME OVER
+		//GAME OVERR
 	}
 	
 	private MoveInterfaceRay randomMove() {
