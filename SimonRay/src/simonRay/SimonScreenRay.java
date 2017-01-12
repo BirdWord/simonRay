@@ -101,8 +101,6 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 							}
 						});
 						buttonPress.start();
-						
-
 						if(acceptInput && sequence.get(sequenceIndex).getButton() == b){
 							sequenceIndex++;
 						}else if(acceptInput){
@@ -119,7 +117,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 			viewObjects.add(buttons[i]);
 		}
 		progress = getProgress();
-		label = new TextLabel(130,230,300,40,"Let's play Simon!");
+		label = new TextLabel(145,200,300,40,"Let's play Simon!");
 		sequence = new ArrayList<MoveInterfaceRay>();
 		lastSelected = -1;
 		sequence.add(randomMove());

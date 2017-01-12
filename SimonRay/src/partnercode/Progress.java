@@ -19,7 +19,7 @@ public class Progress extends Component implements ProgressInterfaceRay {
 	private String sequence;
 
 	public Progress() {
-		super(60,60,WIDTH,HEIGHT);
+		super(50,50,WIDTH,HEIGHT);
 	}
 
 	public void setRound(int roundNumber) {
