@@ -2,8 +2,8 @@ package simonRay;
 
 import java.awt.Color;
 
-import gui.components.Action;
-import gui.components.Clickable;
+import gui.Action;
+import gui.Clickable;
 
 public interface ButtonInterfaceRay extends Clickable {
 

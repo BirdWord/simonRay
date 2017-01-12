@@ -1,14 +1,13 @@
 package simonRay;
 
 import java.awt.Color;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import gui.components.Action;
-import gui.components.TextLabel;
-import gui.components.Visible;
-import gui.screens.ClickableScreen;
+import gui.Action;
+import gui.ClickableScreen;
+import gui.TextLabel;
+import gui.Visible;
 import partnercode.Button;
 import partnercode.Move;
 
@@ -151,4 +150,5 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	private ProgressInterfaceRay getProgress() {
 		return null;
 	}
+
 }

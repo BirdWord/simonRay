@@ -1,6 +1,6 @@
 package simonRay;
 
-import gui.components.Visible;
+import gui.Visible;
 
 public interface ProgressInterfaceRay extends Visible {
 
