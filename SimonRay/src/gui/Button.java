@@ -40,6 +40,7 @@ public class Button extends TextLabel implements Clickable{
 		if(getText()!= null){
 			g.setColor(Color.white);
 			String t = getText();
+			//just in case text is too wide, cut off
 			int cutoff = t.length();
 			while(cutoff > 0 && fm.stringWidth(t) > getWidth()){
 				cutoff --;
@@ -52,8 +53,8 @@ public class Button extends TextLabel implements Clickable{
 
 
 	public boolean isHovered(int x, int y) {
-		return x>getX() && x<getX()+getWidth() 
-		&& y > getY() && y<getY()+getHeight();
+		return x>getX() && x<getX()+getWidth() && 
+				y > getY() && y<getY()+getHeight();
 	}
 	
 	public void act(){
