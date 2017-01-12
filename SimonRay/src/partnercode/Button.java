@@ -14,8 +14,7 @@ public class Button extends Component implements ButtonInterfaceRay{
 	private Action actionB;
 	private boolean highlighted;
 	public Button(int x, int y) {
-		super(x, y,70, 70);
-		// TODO Auto-generated constructor stub
+		super(x, y, 70, 70);
 	}
 
 	@Override

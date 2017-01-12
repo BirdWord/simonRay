@@ -11,6 +11,7 @@ import gui.TextLabel;
 import gui.Visible;
 import partnercode.Button;
 import partnercode.Move;
+import partnercode.Progress;
 
 public class SimonScreenRay extends ClickableScreen implements Runnable {
 	private ProgressInterfaceRay progress;
@@ -78,8 +79,8 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 		for(int i = 0; i < BUTTONS; i++ ){
 			buttons[i] = getAButton();
 			buttons[i].setColor(colors[i]);
-			//buttons[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(BUTTONS))));
-			//buttons[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(BUTTONS))));
+			buttons[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(BUTTONS))));
+			buttons[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(BUTTONS))));
 			final ButtonInterfaceRay b = buttons[i];
 			b.dim();
 			buttons[i].setAction(new Action() {
@@ -115,7 +116,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 					}
 
 			});
-			viewObjects.add(buttons[i]);//f
+			viewObjects.add(buttons[i]);
 		}
 		progress = getProgress();
 		label = new TextLabel(130,230,300,40,"Let's play Simon!");
@@ -130,7 +131,6 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	
 	public void gameOver() {
 		progress.gameOver();
-		//GAME OVERR
 	}
 	
 	private MoveInterfaceRay randomMove() {
@@ -149,7 +149,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	}
 
 	private ProgressInterfaceRay getProgress() {
-		return null;
+		return new Progress();
 	}
 
 }
