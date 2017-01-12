@@ -91,6 +91,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 							
 							public void run() {
 								b.highlight();
+								System.out.println(1);
 								try {
 									Thread.sleep(500);
 								} catch (InterruptedException e) {
