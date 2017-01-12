@@ -115,7 +115,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 					}
 
 			});
-			viewObjects.add(buttons[i]);
+			viewObjects.add(buttons[i]);//f
 		}
 		progress = getProgress();
 		label = new TextLabel(130,230,300,40,"Let's play Simon!");
