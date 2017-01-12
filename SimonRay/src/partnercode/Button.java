@@ -46,7 +46,7 @@ public class Button extends Component implements ButtonInterfaceRay {
 	@Override
 	public void highlight() {
 		// TODO Auto-generated method stub
-		setColor(c);
+		setColor(actualColor);
 	}
 
 	@Override
