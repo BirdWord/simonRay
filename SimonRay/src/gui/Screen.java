@@ -8,7 +8,6 @@ import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import gui.components.Visible;
 
 public abstract class Screen {
 	private BufferedImage image;
