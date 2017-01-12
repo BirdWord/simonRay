@@ -1,18 +1,20 @@
 package partnercode;
 
-import simonRay.ButtonInterfaceRay;
 
+
+import simonRay.ButtonInterfaceRay;
 import simonRay.SimonScreenRay;
 import simonRay.MoveInterfaceRay;
 
 public class Move implements MoveInterfaceRay {
-
-	public Move() {
+	private ButtonInterfaceRay b;
+	public Move(ButtonInterfaceRay b) {
+		this.b = b;
 	}
 
 	@Override
 	public ButtonInterfaceRay getButton() {
-		return SimonScreenRay.getButtons()[(int) (Math.random()*SimonScreenRay.getButtons().length)];
+		return b;
 	}
 
 }
