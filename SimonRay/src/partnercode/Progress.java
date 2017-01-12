@@ -2,8 +2,9 @@ package partnercode;
 
 import java.awt.Graphics2D;
 
-import gui.components.Component;
+import gui.Component;
 import simonRay.ProgressInterfaceRay;
+
 
 public class Progress extends Component implements ProgressInterfaceRay {
 

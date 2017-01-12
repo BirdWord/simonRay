@@ -1,9 +1,6 @@
 package partnercode;
 
-
-
 import simonRay.ButtonInterfaceRay;
-import simonRay.SimonScreenRay;
 import simonRay.MoveInterfaceRay;
 
 public class Move implements MoveInterfaceRay {

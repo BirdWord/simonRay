@@ -4,9 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-import gui.components.Action;
-import gui.components.Clickable;
-import gui.components.Component;
+import gui.Action;
+import gui.Component;
 import simonRay.ButtonInterfaceRay;
 
 public class Button extends Component implements ButtonInterfaceRay{
