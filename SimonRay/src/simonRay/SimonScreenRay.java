@@ -45,18 +45,19 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 		changeText("Simon is poking buttons.");
 		label.setText("");
 		playSequence();
-		changeText("Try to match him.");
+		changeText("Try to copy his actions.");
 		acceptInput = true;
 		currentIndex = 0;
 	}
 	private void playSequence() {
 		ButtonInterfaceRay b = null;
 		for(MoveInterfaceRay m: sequence){
-			if(b!=null)b.dim();
+			if(b!=null)
+				b.dim();
 			b = m.getButton();
 			b.highlight();
 			try {
-				Thread.sleep((long)(2000*(2.0/(round+2))));
+				Thread.sleep((long)(2000/round));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -64,6 +65,15 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 		b.dim();
 	}
 
+	private MoveInterfaceRay randomMove() {
+		int rand;
+		do{
+			rand = (int)(Math.random()*buttons.length);
+		}while(rand == lastSelected);
+		lastSelected = rand;
+		return new Move(buttons[rand]);
+	}	
+	
 	private void changeText(String s){
 		label.setText(s);
 		try {
@@ -117,7 +127,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 			viewObjects.add(buttons[i]);
 		}
 		progress = getProgress();
-		label = new TextLabel(145,400,300,40,"Let's play Simon!");
+		label = new TextLabel(145,400,300,40,"");
 		sequence = new ArrayList<MoveInterfaceRay>();
 		lastSelected = -1;
 		sequence.add(randomMove());
@@ -130,21 +140,14 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	public void gameOver() {
 		progress.gameOver();
 		acceptInput = false;
+		label.setText("You lost.");
 	}
 	
-	private MoveInterfaceRay randomMove() {
-		int rand;
-		do{
-			rand = (int)(Math.random()*buttons.length);
-		}while(rand == lastSelected);
-		lastSelected = rand;
-		return new Move(buttons[rand]);
-	}
 	public static ButtonInterfaceRay[] getButtons(){
 		return buttons;
 	}
 	private ButtonInterfaceRay getAButton() {
-		return new Button(0,0);
+		return new Button(0,0);//doesnt matter ill set the x and y later
 	}
 
 	private ProgressInterfaceRay getProgress() {
