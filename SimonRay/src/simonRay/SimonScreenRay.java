@@ -21,7 +21,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	private final int BUTTONS = 5;
 	private TextLabel label;
 	private static ButtonInterfaceRay[] buttons;
-	private int sequenceIndex;
+	private int currentIndex;
 	private int lastSelected;
 	public SimonScreenRay(int width, int height) {
 		super(width, height);
@@ -41,13 +41,13 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 		MoveInterfaceRay move = randomMove();
 		sequence.add(move);
 		progress.setRound(round);
-		progress.setSequenceSize(sequence.size());
+		progress.setSeqLength(sequence.size());
 		changeText("Simon is poking buttons.");
 		label.setText("");
 		playSequence();
 		changeText("Try to match him.");
 		acceptInput = true;
-		sequenceIndex = 0;
+		currentIndex = 0;
 	}
 	private void playSequence() {
 		ButtonInterfaceRay b = null;
@@ -74,11 +74,11 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 	}
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		Color[] colors = {Color.red, Color.blue, new Color(240,160,70), new Color(20,255,140), Color.yellow};
+		Color[] buttonColors = {Color.red, Color.blue, new Color(240,160,70), new Color(20,255,140), Color.yellow};
 		buttons = new ButtonInterfaceRay[BUTTONS];
 		for(int i = 0; i < BUTTONS; i++){
 			buttons[i] = getAButton();
-			buttons[i].setColor(colors[i]);
+			buttons[i].setColor(buttonColors[i]);
 			buttons[i].setX(((500*i)/BUTTONS)+15);
 			buttons[i].setY(250);
 			final ButtonInterfaceRay b = buttons[i];
@@ -86,9 +86,7 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 			buttons[i].setAction(new Action() {
 
 				public void act() {
-
 						Thread buttonPress = new Thread(new Runnable() {
-							
 							public void run() {
 								if(acceptInput){
 									b.highlight();
@@ -104,18 +102,17 @@ public class SimonScreenRay extends ClickableScreen implements Runnable {
 						buttonPress.start();
 						
 
-						if(acceptInput && sequence.get(sequenceIndex).getButton() == b){
-							sequenceIndex++;
+						if(acceptInput && sequence.get(currentIndex).getButton() == b){
+							currentIndex++;
 						}else if(acceptInput){
 							gameOver();
 							return;
 						}
-						if(sequenceIndex == sequence.size()){
+						if(currentIndex == sequence.size()){
 							Thread nextRound = new Thread(SimonScreenRay.this);
 							nextRound.start();
 						}
 					}
-
 			});
 			viewObjects.add(buttons[i]);
 		}

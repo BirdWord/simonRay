@@ -13,7 +13,7 @@ public class Progress extends Component implements ProgressInterfaceRay {
 
 	private boolean gameOver;
 	private int roundLevel;
-	private int sequenceSize;
+	private int seqLength;
 
 	public Progress() {
 		super(50,50,120,50);
@@ -24,8 +24,8 @@ public class Progress extends Component implements ProgressInterfaceRay {
 		update();
 	}
 
-	public void setSequenceSize(int size) {
-		sequenceSize = size;
+	public void setSeqLength(int length) {
+		seqLength = length;
 		update();
 	}
 
@@ -44,17 +44,16 @@ public class Progress extends Component implements ProgressInterfaceRay {
 			g.setColor(new Color(255,55,90));
 			g.fillRect(0, 0, 120, 50);
 			g.setColor(Color.white);
-			String go = "Game over!";
-			g.drawString(go, (120 - fm.stringWidth(go))/2, 20);
-			g.drawString("Sequence Size = " + sequenceSize, (120 - fm.stringWidth("Sequence Size = " + sequenceSize))/2, 40);
+			g.drawString("Game over", (120 - fm.stringWidth("Game over"))/2, 20);
+			g.drawString("Sequence Length = " + seqLength, (120 - fm.stringWidth("Sequence Length = " + seqLength))/2, 40);
 
 		}else{
 			g.setColor(new Color(220,255,230));
 			g.fillRect(0, 0, 120, 50);
 			g.setColor(Color.black);
 			g.drawRect(0, 0, 120-1, 50-1);
-			g.drawString("Round Number = " + roundLevel, (120 - fm.stringWidth("Round Number = " + roundLevel))/2, 20);
-			g.drawString("Sequence Size = " + sequenceSize, (120 - fm.stringWidth("Sequence Size = " + sequenceSize))/2, 40);
+			g.drawString("Round " + roundLevel, (120 - fm.stringWidth("Round Number "+ roundLevel))/2, 20);
+			g.drawString("Sequence Length = " + seqLength, (120 - fm.stringWidth("Sequence Length = " + seqLength))/2, 40);
 			
 		}
 	}

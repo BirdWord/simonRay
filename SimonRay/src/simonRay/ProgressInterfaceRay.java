@@ -8,6 +8,6 @@ public interface ProgressInterfaceRay extends Visible {
 
 	void setRound(int round);
 
-	void setSequenceSize(int size);
+	void setSeqLength(int length);
 
 }
