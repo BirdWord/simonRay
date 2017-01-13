@@ -8,45 +8,16 @@ import java.util.List;
 import gui.Screen;
 
 public abstract class ClickableScreen extends Screen implements MouseListener {
+
 	private ArrayList<Clickable> clickables;
+	
 	public ClickableScreen(int width, int height) {
 		super(width, height);
-		clickables = new ArrayList<Clickable>();
+		// TODO Auto-generated constructor stub
 	}
 
-	public abstract void initAllObjects(List<Visible> list);
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		for(Clickable c: clickables){
-			if(c.isHovered(arg0.getX(), arg0.getY())){
-				c.act();
-				break;
-			}
-		}
-	}
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void initAllObjects(List<Visible> viewObjects);
+	
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
 		initAllObjects(viewObjects);
@@ -57,16 +28,51 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 			}
 		}
 	}
+
+	public void mouseClicked(MouseEvent m) {
+		for(int i = 0; i < clickables.size(); i++){
+			Clickable c = clickables.get(i);
+			if(c.isHovered(m.getX(), m.getY())){
+				c.act();
+				break;
+			}
+		}
+	}
+	
 	public void addObject(Visible v){
 		super.addObject(v);
-		if(v instanceof Clickable)
-			 clickables.add((Clickable) v);
+		if(v instanceof Clickable){
+			clickables.add((Clickable)v);
+		}
 	}
-		 
+	
+
+	
 	public void remove(Visible v){
 		super.remove(v);
 		clickables.remove(v);
 	}
+
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public MouseListener getMouseListener(){
 		return this;
 	}
